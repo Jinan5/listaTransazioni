@@ -1,13 +1,23 @@
 <div class="card" *ngIf="transazione" style="width: 18rem">
-  <div class="card-body">
+  <div
+    class="card-body"
+    [ngClass]="[
+      transazione.type == 'invoice' ? 'pagamento' : '',
+      transazione.type == 'withdrawal' ? 'prelievo' : ''
+    ]"
+  >
     <h5 class="card-title">{{ transazione.business }}</h5>
     <h6 class="card-subtitle mb-2 text-body-secondary">
       {{ transazione.name }}
     </h6>
-    <p class="card-text">{{ transazione.type }}</p>
-    <p class="card-text">{{ transazione.date }}</p>
+    <p class="card-text">Account: {{ transazione.account }}</p>
+    <p class="card-text">Tipo: {{ transazione.type }}</p>
+    <p class="card-text">{{ transazione.date | date : "mediumDate" }}</p>
     <p class="card-text">
-      <strong>{{ transazione.amount }}$</strong>
+      <strong
+        [ngClass]="[transazione.amount > 700 ? 'importoSuperiore' : '']"
+        >{{ transazione.amount | currency : "CAD" : "symbol-narrow" }}</strong
+      >
     </p>
   </div>
 </div>

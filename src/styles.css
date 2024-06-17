@@ -1,1 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
+.pagamento {
+  background-color: green;
+}
+.prelievo {
+  background-color: gray;
+}
+.importoSuperiore {
+  background-color: yellow;
+}
